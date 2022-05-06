@@ -148,7 +148,7 @@ class Modal(View):
         """
         pass
 
-    async def on_error(self, error: Exception, interaction: Interaction) -> None:
+    async def on_error(self, interaction: Interaction, error: Exception) -> None:
         """|coro|
 
         A callback that is called when :meth:`on_submit`
@@ -158,10 +158,10 @@ class Modal(View):
 
         Parameters
         -----------
-        error: :class:`Exception`
-            The exception that was raised.
         interaction: :class:`~discord.Interaction`
             The interaction that led to the failure.
+        error: :class:`Exception`
+            The exception that was raised.
         """
         print(f'Ignoring exception in modal {self}:', file=sys.stderr)
         traceback.print_exception(error.__class__, error, error.__traceback__, file=sys.stderr)
